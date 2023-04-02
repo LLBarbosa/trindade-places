@@ -29,7 +29,7 @@ app.post('/places', async (request, response) => {
 
     } catch (error) {
         console.log(error);
-        response.status(500).json({message: "It's not possible to resolve the operation"});
+        response.status(500).json({message: "Unable to resolve operation!!"});
     }
 })
 //[M1S09] Ex 4 - Rota GET
@@ -39,12 +39,12 @@ app.get('/places', async (request, response) => {
         return response.json(places);
     } catch (error) {
         console.log(error);
-        response.status(500).json({message: "It's not possible to resolve the operation"});
+        response.status(500).json({message: "Unable to resolve operation!!"});
         
     }
 })
 
-
+//[M1S09 Ex 5 - Rota DELETE]
 app.delete('/places/:id', async (request, response) => { 
     try {
         const id = parseInt(request.params.id);
@@ -52,13 +52,13 @@ app.delete('/places/:id', async (request, response) => {
         Place.destroy({
             where: {id}
         });
-        response.status(200).json({ "mensagem": "Deletado com sucesso" });
+        response.status(200).json({ "mensagem": "Successfuly deleted!!" });
     } catch(error) {
         console.log(error);
-        response.status(500).json({message: "It's not possible to resolve the operation"});
+        response.status(500).json({message: "Unable to resolve operation!!"});
     }
 });
-
+//[M1S09] Ex 6 - Rota PUT
 app.put('/places/:id', async (request, response) => {
     try {
         const id = parseInt(request.params.id);
@@ -82,7 +82,7 @@ app.put('/places/:id', async (request, response) => {
         return response.json(placeUpdated);
     } catch(error) {
         console.log(error);
-        response.status(500).json({message: "It's not possible to resolve the operation"});
+        response.status(500).json({message: "Unable to resolve operation!!"});
     }
 })
 
@@ -94,7 +94,7 @@ function updateIfPresent(place, value, key) {
 
 const PORT = 3333;
 
-//[MS09] - Ex 1 - Projeto Trindade Places
+//[M1S09] - Ex 1 - Projeto Trindade Places
 app.listen(PORT, () => {
     console.log('Server up on port 3333!');
 })
