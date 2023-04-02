@@ -1,0 +1,21 @@
+{
+  "name": "trindade-places",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Laércio Luiz Barbosa",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "pg": "^8.10.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.30.0"
+  },
+  "description": "Exercises - Module 1 - Week 9 - Fullstack LAB365/SENAI 2023",
+  "devDependencies": {}
+}
