@@ -13,7 +13,7 @@ async function create(request, response) {
         response.status(201).json(user);
     } catch (error) {
         console.log(error);
-        response.status(500).json({message: "Unable to resolve operation!!"});
+        response.status(500).json({ message: "Unable to resolve operation!!"});
     }
 }
 //[M1S10] Ex 3 - Rota de sessão e jwt
@@ -26,7 +26,7 @@ async function sessions(request, response) {
         });
 
         if (!userInDatabase) {
-            return response.status(404).json({ message: 'Nome de usuário ou senha incorretos' })
+            return response.status(404).json({ message: "Incorrect username or password!!" });
         }
 
         const token = jwt.sign(

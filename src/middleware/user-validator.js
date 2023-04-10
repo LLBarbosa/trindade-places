@@ -3,22 +3,22 @@ const yup = require("yup");
 
 const validation = yup.object().shape({
     name: yup
-        .string("O nome deve ser uma string")
-        .required("Nome é obrigatório"),
+        .string("Name must be a string")
+        .required("Name is required"),
     email: yup
-        .string()
-        .required("Email é obrigatório"),
+        .string("E-mail must te be a string")
+        .required("E-mail is required"),
     username: yup
-        .string()
-        .required("Username é obrigatório"),
+        .string("Username must be a string")
+        .required("Username is required"),
     password: yup
         .string()
-        .min(8, "A senha deve ter no mínimo 8 caracteres")
-        .required("Senha é obrigatória")
+        .min(8, "Password must be at least 8 characters")
+        .required("Password is required")
 })
 
 function validateNewUser(request, response, next) {
-  console.log("dado original", request.body)
+  console.log("original data", request.body)
 
   try {
     validation.validateSync(request.body)

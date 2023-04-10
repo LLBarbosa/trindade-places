@@ -71,7 +71,7 @@ async function destroy(request, response) {
         Place.destroy({
             where: {id}
         });
-        response.status(200).json({ "mensagem": "Successfuly deleted!!" });
+        response.status(200).json({message: "Successfuly deleted!!" });
     } catch(error) {
         console.log(error);
         response.status(500).json({message: "Unable to resolve operation!!"});

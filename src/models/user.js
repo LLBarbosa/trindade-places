@@ -24,7 +24,7 @@ const User = connection.define('user', {
     },
     password: {
         type: Sequelize.STRING,
-        validate: {min: {args: 8, msg: "Minimum 8 characters required in password"}}
+        validate: {min: {args: 8, msg: "Password must be at least 8 charateres"}}
     },
 });
 

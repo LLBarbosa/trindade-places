@@ -2,34 +2,34 @@ const jwt = require('jsonwebtoken')
 
 // [M1S10] Ex 4 - Middleware JTW Validator
 function validateToken(request, response, next) {
-    // validar se tem token no Header da requisição
-    console.log(request.headers.authorization)
-    const token = request.headers.authorization
 
-    console.log(token)
+  console.log(request.headers.authorization)
+  const token = request.headers.authorization
 
-    // verificar se token pelo menos está presente
-    if (!token || token === 'Bearer') {
-        return response.status(403).json({ message: 'Token não presente' })
+  console.log(token)
+
+
+  if (!token || token === 'Bearer') {
+    return response.status(403).json({ message: "Token not present" })
+  }
+
+  const tokenJwt = token.slice(7)
+
+  jwt.verify(tokenJwt, process.env.CHAVE_DO_TOKEN, function (error, conteudoDescodificado) {
+    if (error) {
+      if (error.name === 'TokenExpiredError') {
+        return response.status(401).json({ error: 'Token expired' });
+      } else if (error.name === 'JsonWebTokenError') {
+        return response.status(401).json({ error: 'Invalid token' });
+      } else {
+        return response.status(500).json({ error: 'Internal server error' });
+      }
+    } else {
+      console.log(conteudoDescodificado)
+      request.body.userId = conteudoDescodificado.id
+      return next();
     }
-
-    const tokenJwt = token.slice(7)
-
-    jwt.verify(tokenJwt, process.env.CHAVE_DO_TOKEN, function(error, conteudoDescodificado) {
-        if (error) {
-          if (error.name === 'TokenExpiredError') {
-            return response.status(401).json({ error: 'Token expired' });
-          } else if (error.name === 'JsonWebTokenError') {
-            return response.status(401).json({ error: 'Invalid token' });
-          } else {
-            return response.status(500).json({ error: 'Internal server error' });
-          }
-        } else {
-            console.log(conteudoDescodificado)
-            request.body.userId = conteudoDescodificado.id
-          return next();
-        }
-      });
+  });
 }
 
-module.exports = {validateToken}
+module.exports = { validateToken }

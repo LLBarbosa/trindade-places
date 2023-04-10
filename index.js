@@ -5,7 +5,7 @@ const connection = require('./src/database');
 const app = express();
 app.use(router);
 
-app.use(express.json()) //obrigatório
+app.use(express.json()) // required
 
 connection.authenticate();
 connection.sync({alter: true});
