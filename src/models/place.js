@@ -28,11 +28,9 @@ const Place = connection.define('place', {
         type: Sequelize.STRING
     },
 
-
     latitude: {
         type: Sequelize.DECIMAL
     },
-
 
     longitude: {
         type: Sequelize.DECIMAL
